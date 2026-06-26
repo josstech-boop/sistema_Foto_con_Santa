@@ -1,0 +1,132 @@
+:root {
+    --rojo-navidad: #d42426;
+    --rojo-oscuro: #9c1214;
+    --blanco-nieve: #fdfdfd;
+    --gris-suave: #f8f9fa;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f6f9;
+    /* Fondo limpio con sutiles detalles navideños abstractos */
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(212, 36, 38, 0.03) 2px, transparent 2px),
+        radial-gradient(circle at 90% 80%, rgba(212, 36, 38, 0.03) 3px, transparent 3px),
+        linear-gradient(180deg, #ffffff 0%, #f9f1f2 100%);
+    background-size: 50px 50px, 70px 70px, 100% 100%;
+    min-height: 100vh;
+}
+
+.titulo-navideno {
+    font-family: 'Mountains of Christmas', cursive;
+    color: var(--rojo-navidad);
+    font-size: 3.8rem;
+    font-weight: 700;
+    text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Línea divisoria elegante */
+.linea-decorativa {
+    height: 4px;
+    max-width: 600px;
+    background: linear-gradient(90deg, transparent, var(--rojo-navidad), transparent);
+    margin: 1.5rem auto 2.5rem auto;
+}
+
+/* Contenedores con degradados bien nivelados */
+.tarjeta-blanca {
+    background: #ffffff;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-roja {
+    background: linear-gradient(135deg, var(--rojo-navidad) 0%, var(--rojo-oscuro) 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(212, 36, 38, 0.25);
+}
+
+/* Inputs estilizados para el formulario */
+.form-control-custom {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control-custom:focus {
+    border-color: var(--rojo-navidad);
+    box-shadow: 0 0 0 4px rgba(212, 36, 38, 0.15);
+    outline: none;
+}
+
+/* Botones Pro */
+.btn-rojo-pro {
+    background: linear-gradient(135deg, var(--rojo-navidad) 0%, #b31013 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-rojo-pro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 36, 38, 0.35);
+    color: white;
+    background: linear-gradient(135deg, #b31013 0%, var(--rojo-oscuro) 100%);
+}
+
+.btn-verde-pro {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-verde-pro:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(39, 174, 96, 0.4);
+    color: white;
+}
+
+/* Animación sutil para Santa */
+.santa-animado {
+    font-size: 4.5rem;
+    animation: balanceo 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes balanceo {
+
+    0%,
+    100% {
+        transform: rotate(0deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(4deg) translateY(-5px);
+    }
+}
+
+.badge-turno {
+    background-color: var(--rojo-navidad);
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

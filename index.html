@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fila Virtual: Foto con Santa 🎅📸</title>
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Mountains+of+Christmas:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="titulo-navideno">🎅 Foto con Santa Claus 📸</h1>
+            <p class="text-muted fw-semibold">Estructura de Datos: Colas (Queue) — ¡Practica el flujo FIFO!</p>
+            <div class="linea-decorativa"></div>
+        </header>
+
+        <div class="row g-4 justify-content-center mb-5">
+            <div class="col-lg-5 col-md-6">
+                <div class="card tarjeta-blanca h-100 p-4 p-lg-5">
+                    <h3 class="text-danger fw-bold mb-4 d-flex align-items-center gap-2">
+                        <span>🎄</span> Registrar Niño
+                    </h3>
+                    <form id="formularioRegistro" onsubmit="event.preventDefault();">
+                        <div class="mb-3">
+                            <label for="nombreNino" class="form-label fw-semibold text-secondary">Nombre
+                                completo:</label>
+                            <input type="text" class="form-control form-control-custom" id="nombreNino"
+                                placeholder="Ej. Juanito Ortega" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edadNino" class="form-label fw-semibold text-secondary">Edad:</label>
+                            <input type="number" class="form-control form-control-custom" id="edadNino" min="1" max="12"
+                                placeholder="Ej. 6 años" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="regaloNino" class="form-label fw-semibold text-secondary">Regalo
+                                prometido:</label>
+                            <input type="text" class="form-control form-control-custom" id="regaloNino"
+                                placeholder="Ej. Una bicicleta azul 🚲" required>
+                        </div>
+                        <button type="submit" id="btnRegistrar" class="btn btn-rojo-pro w-100 btn-lg shadow-sm">
+                            ✨ Unirse a la Fila
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="card tarjeta-roja h-100 p-4 p-lg-5 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3 class="fw-bold m-0 d-flex align-items-center gap-2"><span>🎁</span> Con Santa</h3>
+                            <span class="badge bg-white text-danger fw-bold px-3 py-2 rounded-pill shadow-sm"
+                                id="contadorCola">
+                                En espera: 0 niños
+                            </span>
+                        </div>
+
+                        <div class="bg-white text-dark rounded-4 p-4 mb-4 shadow-sm position-relative">
+                            <span
+                                class="position-absolute top-0 end-0 m-3 badge bg-success text-white px-2 py-1 rounded-pill small fw-bold">EN
+                                FOTO</span>
+                            <h6 class="text-danger fw-bold text-uppercase tracking-wider small mb-3">Fotografía Actual:
+                            </h6>
+                            <div id="contenedorActual" class="d-flex align-items-center gap-4">
+                                <div class="santa-animado">🎅</div>
+                                <div class="ocultarActual">
+                                    <h4 class="fw-bold text-dark m-0 mb-1" id="nombreActual">Nadie en el turno</h4>
+                                    <p class="text-muted m-0 small" id="detalleActual">Presiona el botón de abajo para
+                                        llamar al primer niño.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white bg-opacity-10 text-white rounded-4 p-3 border border-white border-opacity-10 shadow-sm">
+                            <span class="text-white text-opacity-70 small d-block mb-1">👀 Siguiente en fila:</span>
+                            <h6 class="m-0 fw-bold fs-5 text-white" id="nombreProximo">Ninguno en espera</h6>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button id="btnSiguienteTurno" class="btn btn-verde-pro w-100 py-3 shadow" disabled>
+                            🔔 Llamar Siguiente Turno (Voz)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6">
+                <div class="card tarjeta-blanca p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-danger fw-bold m-0">🚶 Fila de Espera</h4>
+                        <span class="badge bg-light text-muted border px-2 py-1 rounded">Estructura FIFO</span>
+                    </div>
+
+                    <div id="listaEspera" class="list-group overflow-auto style-scroll"
+                        style="max-height: 300px; min-height: 120px;">
+                        <div class="text-center py-4 text-muted my-auto" id="filaVaciaMensaje">
+                            <p class="fs-2 m-0 ">🫙</p>
+                            <p class="m-0 small ">La cola está vacía por el momento.</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card tarjeta-blanca p-4">
+                    <h4 class="text-success fw-bold mb-3">📜 Historial de Fotos Guardadas</h4>
+
+                    <div id="historialFotos" class="list-group overflow-auto style-scroll"
+                        style="max-height: 300px; min-height: 120px;">
+                        <div class="text-center py-4 text-muted my-auto" id="historialVacioMensaje">
+                            <p class="fs-2 m-0">📷</p>
+                            <p class="m-0 small">Ninguna foto capturada todavía.</p>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./bootstrap-5.3.8-dist/js/bootstrap.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
