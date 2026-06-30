@@ -31,6 +31,7 @@ class Participante {
     }
     set edad(value) {
         this.#edad = value
+        
     }
     set turno(value) {
         this.#turno = value
