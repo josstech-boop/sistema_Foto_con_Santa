@@ -13,6 +13,7 @@ class Queue {
         this.first = null
         this.last = null
         this.length = 0
+        this.turno = 1
     }
 
     peek() {
@@ -21,17 +22,21 @@ class Queue {
 
     enqueue(datos) {
         const newParticipante = new Participante(datos)
-        newParticipante.turno = this.length + 1
+        newParticipante.turno = this.turno
         if (this.length === 0) {
             this.first = newParticipante
             this.last = newParticipante
+            btnSiguiente.disabled = false
+
         } else {
             this.last.next = newParticipante
             this.last = newParticipante
         }
         this.length++
+        this.turno++
         this.pintar()
-        btnSiguiente.disabled = false
+        // if (this.length == 0) {
+        // }
         return this
     }
 
